@@ -6,7 +6,7 @@ import cors from "cors";
 const app = express();
 const prisma = new PrismaClient();
 
-// middlewares
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -26,7 +26,7 @@ app.post("/api/users", async (req, res) => {
   }
 });
 
-// ✅ Get all users
+
 app.get("/api/users", async (req, res) => {
   try {
     const users = await prisma.user.findMany();
@@ -36,7 +36,7 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-// ✅ Get user by ID
+
 app.get("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -50,7 +50,7 @@ app.get("/api/users/:id", async (req, res) => {
   }
 });
 
-// ✅ Update a user
+
 app.put("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   const { name, email, password } = req.body;
@@ -66,7 +66,7 @@ app.put("/api/users/:id", async (req, res) => {
   }
 });
 
-// ✅ Delete a user
+
 app.delete("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -80,4 +80,4 @@ app.delete("/api/users/:id", async (req, res) => {
 });
 
 const PORT = 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
